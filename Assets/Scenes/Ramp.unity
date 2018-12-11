@@ -124,6 +124,7 @@ GameObject:
   - component: {fileID: 245823700}
   - component: {fileID: 245823702}
   - component: {fileID: 245823703}
+  - component: {fileID: 245823704}
   m_Layer: 0
   m_Name: Object Sprite
   m_TagString: Untagged
@@ -184,7 +185,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 245823699}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.18, y: 10.28, z: 0}
+  m_LocalPosition: {x: -5.25, y: 8.189, z: 0}
   m_LocalScale: {x: 0.31875, y: 0.3215, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -225,6 +226,19 @@ CircleCollider2D:
   m_Offset: {x: -0.0035524368, y: 0.00967443}
   serializedVersion: 2
   m_Radius: 1.1738173
+--- !u!114 &245823704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 245823699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64ff1dcb25b2e49a68ee68dc40a7c6a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectCollider: {fileID: 245823703}
+  rampCollider: {fileID: 792839201}
 --- !u!1 &337559371
 GameObject:
   m_ObjectHideFlags: 0
