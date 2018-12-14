@@ -4,8 +4,11 @@ using System.Collections;
 public class ArrowController : MonoBehaviour {
 
     public GameObject player;       //Public variable to store a reference to the player game object
-    private Rigidbody2D rb; 
+    private Rigidbody2D rb;
     private Quaternion newRotation;
+    private double atan;
+    private float degrees;
+    private Vector3 scale;
     private Vector3 offset;         //Private variable to store the offset distance between the player and camera
 
     // Use this for initialization
@@ -13,8 +16,8 @@ public class ArrowController : MonoBehaviour {
     {
         offset = transform.position - player.transform.position;
         rb = player.GetComponent<Rigidbody2D>();
-        Debug.Log(Mathf.Atan2((float)rb.velocity.y, (float)rb.velocity.x));
-
+        newRotation = new Quaternion();
+        scale = new Vector3 (0, 0, 0);
     }
     
     // LateUpdate is called after Update each frame
@@ -23,9 +26,11 @@ public class ArrowController : MonoBehaviour {
         transform.position = player.transform.position + offset;
         Debug.Log(rb.velocity.magnitude);
         Debug.Log("magnitude");
-        newRotation = 360 * Mathf.Atan2((float)rb.velocity.y, (float)rb.velocity.x) / 6.28;
-        Debug.Log(newRotation);
-        newRotation = Quaternion.Euler(0.0, 0.0, newRotation);
+        scale = new Vector3 (rb.velocity.magnitude / 10, 1, 1);
+        transform.localScale = scale;
+        atan = 360 * Mathf.Atan2(rb.velocity.y, rb.velocity.x) / 6.28;
+        degrees = (float)atan;
+        newRotation = Quaternion.Euler(0, 0, degrees);
         transform.rotation = newRotation;
     }
 }
