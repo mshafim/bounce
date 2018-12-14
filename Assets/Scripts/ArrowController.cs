@@ -13,6 +13,7 @@ public class ArrowController : MonoBehaviour {
     {
         offset = transform.position - player.transform.position;
         rb = player.GetComponent<Rigidbody2D>();
+        Debug.Log(Mathf.Atan2((float)rb.velocity.y, (float)rb.velocity.x));
 
     }
     
@@ -22,8 +23,9 @@ public class ArrowController : MonoBehaviour {
         transform.position = player.transform.position + offset;
         Debug.Log(rb.velocity.magnitude);
         Debug.Log("magnitude");
-        Debug.Log(360 * Mathf.Atan2(rb.velocity.y, rb.velocity.x) / 6.28);
-        newRotation = Quaternion.Euler(0.0, 0.0, 360 * Mathf.Atan2(rb.velocity.y, rb.velocity.x) / 6.28);
-        transform.rotation = rotation;
+        newRotation = 360 * Mathf.Atan2((float)rb.velocity.y, (float)rb.velocity.x) / 6.28;
+        Debug.Log(newRotation);
+        newRotation = Quaternion.Euler(0.0, 0.0, newRotation);
+        transform.rotation = newRotation;
     }
 }
