@@ -9,12 +9,10 @@ public class ArrowController : MonoBehaviour {
     private double atan;
     private float degrees;
     private Vector3 scale;
-    private Vector3 offset;         //Private variable to store the offset distance between the player and camera
 
     // Use this for initialization
     void Start () 
     {
-        offset = transform.position - player.transform.position;
         rb = player.GetComponent<Rigidbody2D>();
         newRotation = new Quaternion();
         scale = new Vector3 (0, 0, 0);
@@ -23,11 +21,12 @@ public class ArrowController : MonoBehaviour {
     // LateUpdate is called after Update each frame
     void LateUpdate () 
     {
-        transform.position = player.transform.position + offset;
-        Debug.Log(rb.velocity.magnitude);
-        Debug.Log("magnitude");
-        scale = new Vector3 (rb.velocity.magnitude / 10, 1, 1);
+        // changes position to ball's position
+        transform.position = player.transform.position;
+        // changes scale to the magnitude of ball's velocity, relatively
+        scale = new Vector3 (rb.velocity.magnitude / 10, 1 + (rb.velocity.magnitude / 20), 1);
         transform.localScale = scale;
+        // changes rotation to direction of ball's velocity
         atan = 360 * Mathf.Atan2(rb.velocity.y, rb.velocity.x) / 6.28;
         degrees = (float)atan;
         newRotation = Quaternion.Euler(0, 0, degrees);
