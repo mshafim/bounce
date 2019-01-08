@@ -16,6 +16,7 @@ public class BoostBall : MonoBehaviour {
 		{
 			rb.AddForce(transform.up * up_boost);
 			rb.AddForce(transform.right * right_boost);
+
 		}
 	}
 }
