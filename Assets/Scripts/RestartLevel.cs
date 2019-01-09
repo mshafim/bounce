@@ -35,14 +35,9 @@ public class RestartLevel : MonoBehaviour {
 			// boost.SetActive(false);
 		}
 
-		if (t.position[0] > -5.13 && y == t.position[1])
+		if (Input.GetKeyDown("q"))
 		{
-			count++;
-		}
-
-		if (count == 1000)
-		{
-			rb.constraints = RigidbodyConstraints2D.FreezePositionX;
+			rb.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY;
 			restart_button.SetActive(true);
 			quit_button.SetActive(true);
 		}
