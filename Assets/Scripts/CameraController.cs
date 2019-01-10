@@ -16,7 +16,7 @@ public class CameraController : MonoBehaviour {
         offset = transform.position - player.transform.position;
         init = boostpad.transform.position.y - player.transform.position.y;
         camvariance = 150;
-        Debug.Log(init);
+        // Debug.Log(init);
         GetComponent<Camera>().orthographicSize = 6;
     }
     
