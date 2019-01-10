@@ -4,6 +4,7 @@ using System.Collections;
 public class ArrowController : MonoBehaviour {
 
     public GameObject player;       //Public variable to store a reference to the player game object
+    public Vector2 velocity;
     private Rigidbody2D rb;
     private Quaternion newRotation;
     private double atan;
@@ -16,11 +17,13 @@ public class ArrowController : MonoBehaviour {
         rb = player.GetComponent<Rigidbody2D>();
         newRotation = new Quaternion();
         scale = new Vector3 (0, 0, 0);
+        velocity = new Vector2 (0, 0);
     }
     
     // LateUpdate is called after Update each frame
     void LateUpdate () 
     {
+    	velocity = new Vector2 (rb.velocity.x, rb.velocity.y);
         // changes position to ball's position
         transform.position = player.transform.position;
         // changes scale to the magnitude of ball's velocity, relatively
