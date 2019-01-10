@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using TMPro;
 
 public class ArrowController : MonoBehaviour {
 
@@ -11,6 +12,10 @@ public class ArrowController : MonoBehaviour {
     private float degrees;
     private Vector3 scale;
 
+    private GameObject obj;
+    private TextMeshProUGUI display;
+    private Transform t;
+
     // Use this for initialization
     void Start () 
     {
@@ -18,6 +23,11 @@ public class ArrowController : MonoBehaviour {
         newRotation = new Quaternion();
         scale = new Vector3 (0, 0, 0);
         velocity = new Vector2 (0, 0);
+
+        obj = GameObject.FindWithTag("Velocity");
+        display = obj.GetComponent<TextMeshProUGUI>();
+        display.text = "Velocity Vector: (0, 0)";
+        t = GetComponent<Transform>();
     }
     
     // LateUpdate is called after Update each frame
@@ -34,5 +44,9 @@ public class ArrowController : MonoBehaviour {
         degrees = (float)atan;
         newRotation = Quaternion.Euler(0, 0, degrees);
         transform.rotation = newRotation;
+        if (t.position[0] > -1.7)
+        {
+            display.text = "Velocity Vector: (" + rb.velocity.x + ", " + rb.velocity.y + ")";
+        }
     }
 }
